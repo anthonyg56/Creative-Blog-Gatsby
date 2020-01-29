@@ -1,3 +1,6 @@
+require('dotenv').config({
+  path: `.env`
+})
 module.exports = {
   siteMetadata: {
     title: `A Creatives Blog`,
@@ -11,15 +14,8 @@ module.exports = {
       resolve: 'gatsby-source-prismic-graphql',
         options: {
           repositoryName: 'creative-blog-gatsby', // (REQUIRED, replace with your own)
-          accessToken: 'MC5YakYzYVJFQUFDQUFkV0Fn.77-977-9Bu-_vTdJ77-9Fw8EfO-_ve-_vQoNUe-_ve-_vWwt77-9I--_vV_vv71877-977-977-9TO-_vWY', // (optional API access token)
-          /*path: '/preview', // (optional preview path. Default: /preview)
-          previews: true // (optional, activated Previews. Default: false)
-          pages: [{ // (optional, builds pages dynamically)
-            type: 'Article',         // TypeName from prismic
-            match: '/article/:uid',  // Pages will be generated under this pattern
-            path: '/article',        // Placeholder page for unpublished documents
-            component: require.resolve('./src/templates/article.js'),
-          }],*/
+          accessToken: process.env.API_KEY // (optional API access token)
+          
       }
     },
     {
