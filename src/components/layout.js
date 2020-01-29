@@ -6,46 +6,34 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link } from 'gatsby'
 
-import Header from "./header"
-import "./layout.css"
-
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
-  return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+const Layout = ({ children }) => (
+  <div id="layout">
+    <div id="navbar">
+      <div id="navbar-container">
+        <Link to="/">
+          <p>Home</p>
+        </Link>
+        <Link to="/about">
+          <p>About</p>
+        </Link>
+        <Link to="/blog">
+          <p>Blog</p>
+        </Link>
+        <Link to="/art">
+          <p>Art</p>
+        </Link>
+        <Link to="/poetry">
+          <p>Poetry</p>
+        </Link>
       </div>
-    </>
-  )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
+    </div>
+    { children }
+    <div id="footer">
+      {/* Social Media Links & Icons */}
+    </div>
+  </div>
+)
 
 export default Layout
