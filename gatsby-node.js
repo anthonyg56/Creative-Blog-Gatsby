@@ -9,53 +9,90 @@ const path = require('path')
 
 exports.createPages = ({ graphql, actions }) => {
     const { createPage } = actions
+    const contentfulComponent = templatePath => path.resolve(`./src/templates/${templatePath}-post-contentful.js`)
 
-    const blogPost = path.resolve(`./src/templates/blog-post-contentful.js`)
     return graphql(
         `
-            {allContentfulBlogPost {
-                edges {
-                    node {
-                        id
-                        title
-                        tags
-                        slug
-                        description {
-                            description
-                        }
-                        heroImage {
-                            file {
-                                url
+            {
+                allContentfulArt {
+                    edges {
+                        node {
+                            picture {
+                                file {
+                                    url
+                                }
                             }
                             title
-                        }
-                        body {
-                            body
+                            description
+                            body {
+                                childContentfulRichText {
+                                    html
+                                }
+                            }
+                            slug
+                            date
                         }
                     }
                 }
-            }}
+                allContentfulBlog {
+                    edges {
+                        node {
+                            picture {
+                                file {
+                                    url
+                                }
+                            }
+                            title
+                            description
+                            body {
+                                childContentfulRichText {
+                                    html
+                                }
+                            }
+                            slug
+                            publishDate
+                        }
+                    }
+                }
+            }
         `
-    ).then(results => {
+    )
+    .then(results => {
         if(results.error){
             throw results.error
         }
 
-        const posts = results.data.allContentfulBlogPost.edges
+        const artPosts = results.data.allContentfulArt.edges
+        const blogPosts = results.data.allContentfulBlog.edges
 
-        posts.forEach((post, index) => {
-            const previous = index === 0 ? null : posts[index - 1].node
-            const next = index === posts.length - 1 ? null : posts[index + 1].node
+        artPosts.forEach((post, index) => {
+            const previous = index === 0 ? null : artPosts[index - 1].node
+            const next = index === artPosts.length - 1 ? null : artPosts[index + 1].node
 
             createPage({
-                path: `blog/${post.node.slug}`,
-                component: blogPost,
+                path: `art/${post.node.slug}`,
+                component: contentfulComponent(`art`),
                 context: {
                     slug: post.node.slug,
                     previous,
                     next
                 }
 
+            })
+        })
+
+        blogPosts.forEach((post, index) => {
+            const previous = index === 0 ? null : blogPosts[index - 1].node
+            const next = index === blogPosts.length - 1 ? null : blogPosts[index + 1].node
+
+            createPage({
+                path: `blog/${post.node.slug}`,
+                component: contentfulComponent(`blog`),
+                context: {
+                    slug: post.node.slug,
+                    previous,
+                    next
+                }
             })
         })
     })
