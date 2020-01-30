@@ -1,6 +1,7 @@
 require('dotenv').config({
   path: `.env`
 })
+
 module.exports = {
   siteMetadata: {
     title: `A Creatives Blog`,
@@ -11,13 +12,14 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     {
-      resolve: 'gatsby-source-prismic-graphql',
-        options: {
-          repositoryName: 'creative-blog-gatsby', // (REQUIRED, replace with your own)
-          accessToken: process.env.API_KEY // (optional API access token)
-          
-      }
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `3zqjk23iyqdq`,
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken: process.env.API_KEY,
+      },
     },
+    `@contentful/gatsby-transformer-contentful-richtext`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -39,7 +41,7 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    
+    `gatsby-transformer-remark`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
