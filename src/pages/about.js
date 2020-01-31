@@ -1,19 +1,29 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import SEO from "../components/seo"
 import Layout from '../components/layout'
 
-const About = () => {
+const About = ({ data }) => {
+    const aboutData = data.contentfulAbout
+    const {
+        title,
+        body,
+        picture
+    } = aboutData
     return(
         <Layout>
             <SEO title="About"/>
             <div id="About">
                 <div id="About-Photo">
-                    {/* Photo of blog owner */}
-                    <h1>Photo</h1>
+                    <img src={picture.file.url} />
                 </div>
                 <div id="About-Description">
-                    {/* Description of Blog owner */}
-                    <h1>Description</h1>
+                    <h1>{ title }</h1>
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: body.childContentfulRichText.html
+                        }}
+                    />
                 </div>
             </div>    
         </Layout>
@@ -22,3 +32,21 @@ const About = () => {
 }
 
 export default About
+
+export const PageQuery = graphql`
+    query {
+        contentfulAbout(id: {eq: "37febf53-5ea0-5cc8-b97c-2341ecd4e157"}) {
+            title
+            body {
+                childContentfulRichText {
+                    html
+                }
+            }
+            picture {
+                file {
+                    url
+                }
+            }
+        }
+    }
+`
