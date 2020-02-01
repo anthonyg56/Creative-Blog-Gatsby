@@ -20,20 +20,20 @@ const ArtPostContentfulTemplate = ({ data, location, pageContext }) => {
     return(
         <Layout>
             <SEO title="Art Post"/>
-            <div id="Art-Post">
-                <div id="Art-Post-Photo">
+            <div className="Art-Post">
+                <div className="Art-Post-Photo">
                     <img src={picture.file.url} />
                 </div>
-                <div id="Art-Post-Text">
+                <div className="Art-Post-Text">
                     <h1>{ title }</h1>
                     <h4>{ date }</h4>
-                    <div
+                </div>
+                <div
                         dangerouslySetInnerHTML={{
                             __html: body.childContentfulRichText.html
                         }}
                     />
-                </div>
-                <div id="Art-Post-Next-Posts">
+                <div className="Art-Post-Next-Posts">
                     <p>Next 3 art posts</p>
                 </div>
             </div>

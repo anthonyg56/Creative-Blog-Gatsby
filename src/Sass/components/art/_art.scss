@@ -1,0 +1,28 @@
+.Art-Card {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    .Art-Card-Overlay {
+        height: 100%;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        transition: 0.3s;
+        .Art-Card-Overlay-Container {
+            color: white;
+            h4 {
+                
+            }
+            p {
+                display: none;
+                transition: 0.3s;
+            }    
+        }
+    }
+    .Art-Card-Overlay:hover {
+        background-color: rgba(0,0,0,0.2);
+        p {
+            display: block;
+        }
+    }
+}

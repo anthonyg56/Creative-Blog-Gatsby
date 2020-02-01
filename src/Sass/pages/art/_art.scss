@@ -1,0 +1,9 @@
+.Art {
+    .Art-Header {
+        text-align: center;
+    }
+    .Art-Content {
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+}

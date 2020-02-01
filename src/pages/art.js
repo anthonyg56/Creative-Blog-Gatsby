@@ -2,26 +2,32 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import SEO from '../components/seo'
 import Layout from '../components/layout'
+import ArtCard from '../components/Art/Card'
 
 const Art = ({ data }) => {
     const artPosts = data.allContentfulArt.edges
     return(
         <Layout>
             <SEO title="Art"/>
-            <div>
-                {/* Art Content */}
-                <h1>Art Content Goes Here</h1>
+            <div className="Art">
+                <div className="Art-Header">
+                    {/* Art Content */}
+                    <h1>Art Content Goes Here</h1>
+                </div>
+                <div className="Art-Content">
+                    {artPosts.map(({node}, index) => {
+                        // const {
+                        //     picture,
+                        //     title,
+                        //     description,
+                        //     slug,
+                        //     date
+                        // } = node
+                        return <ArtCard {...node} />
+                    })}    
+                </div>
+                    
             </div>
-            {artPosts.map(({node}, index) => {
-                const {
-                    picture,
-                    title,
-                    description,
-                    slug,
-                    date
-                } = node
-                return <div><Link to={`/art/${slug}`}>{ title }</Link><br/></div>
-            })}
         </Layout>
     )
 }

@@ -1,12 +1,19 @@
 import React from 'react'
+import { Link } from 'gatsby'
 
-const Card = () => {
+const ArtCard = ({ title, picture, slug}) => {
     return(
-        <div id="Card">
-            <div id="Card-Oerlay">
-                <h4>Title</h4>
-                <p>Click To Read</p>
+        <Link to={`/art/${slug}`}>
+            <div className="Art-Card" style={{backgroundImage: `url(${picture.file.url})`}}>
+                <div className="Art-Card-Overlay">
+                    <div className="Art-Card-Overlay-Container">
+                        <h4>{ title }</h4>
+                        <p>Click To Read</p>    
+                    </div>
+                </div>
             </div>
-        </div>
+        </Link>
     )
 }
+
+export default ArtCard
