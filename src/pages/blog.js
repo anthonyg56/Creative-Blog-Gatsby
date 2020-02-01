@@ -1,7 +1,8 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import SEO from '../components/seo'
 import Layout from '../components/layout'
+import BlogCard from '../components/Blog/Card'
 
 const Blog = ({ data }) => {
     const blogPost = data.allContentfulBlog.edges
@@ -9,20 +10,20 @@ const Blog = ({ data }) => {
     return(
         <Layout>
             <SEO title="Blog"/>
-            <div>
-                {/* Blog Content */}
-                <h1>Blog Content Goes Here</h1>
+            <div className="Blog">
+                <div className="Blog-Header">
+                    {/* Blog Content */}
+                    <h1>Blog Title Goes Here</h1>
+                </div>
+                <div className="Blog-Content">
+                    {blogPost.map(({node}, index) => {
+                        const data = node
+                        console.log(data)
+                        return <BlogCard {...data} key={index} />
+                    })}    
+                </div>
+                    
             </div>
-            {blogPost.map(({node}, index) => {
-                const {
-                    picture,
-                    title,
-                    description,
-                    slug,
-                    publishDate
-                } = node
-                return <div><Link to={`/blog/${slug}`}>{ title }</Link><br/></div>
-            })}
         </Layout>
     )
 }

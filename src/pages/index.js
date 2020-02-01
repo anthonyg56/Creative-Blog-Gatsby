@@ -14,39 +14,44 @@ const HomePage = ({ data }) => {
   } = backgrounds
   return(
     <div className="Home">
-      <SEO title="Home"/>
-      <h1>A Creatives Blog</h1>
-      <div className="Collumn Section" id="Blog" style={{backgroundImage: `url(${blog.file.url})`}}>
-          <Link to="/blog">
+      <div className="Header">
+        <h1>A Creatives Blog</h1>  
+      </div>
+      <div className="Tiles">
+        <SEO title="Home"/>
+        <div className="Collumn Section" id="Blog" style={{backgroundImage: `url(${blog.file.url})`}}>
+            <Link to="/blog">
+              <div className="Overlay">
+                <h2>Blog</h2>
+              </div>
+            </Link>
+        </div>
+        <div className="Collumn Section" id="Art" style={{backgroundImage: `url(${art.file.url})`}}>
+          <Link to="/art">
             <div className="Overlay">
-              <h2>Blog</h2>
+              <h2>Art</h2>
             </div>
           </Link>
-      </div>
-      <div className="Collumn Section" id="Art" style={{backgroundImage: `url(${art.file.url})`}}>
-        <Link to="/art">
-          <div className="Overlay">
-            <h2>Art</h2>
-          </div>
-        </Link>
-      </div>
-      <div className="Collumn" id="About-Poetry">
-          <div className="Section" id="About" style={{backgroundImage: `url(${about.file.url})`}}>
-            <Link to="/about">
-              <div className="Overlay">
-                <h2>About</h2>
-              </div>
-            </Link>
-          </div>
-          <div className="Section" id="Poetry" style={{backgroundImage: `url(${poetry.file.url})`}}>
-            <Link to="/poetry">
-              <div className="Overlay">
-                <h2>Poetry</h2>
-              </div>
-            </Link>
-          </div>
-      </div>
-  </div>
+        </div>
+        <div className="Collumn" id="About-Poetry">
+            <div className="Section" id="About" style={{backgroundImage: `url(${about.file.url})`}}>
+              <Link to="/about">
+                <div className="Overlay">
+                  <h2>About</h2>
+                </div>
+              </Link>
+            </div>
+            <div className="Section" id="Poetry" style={{backgroundImage: `url(${poetry.file.url})`}}>
+              <Link to="/poetry">
+                <div className="Overlay">
+                  <h2>Poetry</h2>
+                </div>
+              </Link>
+            </div>
+        </div>
+    </div>  
+    </div>
+    
   )
 }
 

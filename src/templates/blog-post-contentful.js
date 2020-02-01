@@ -18,24 +18,27 @@ const BlogPostContentfulTemplate = ({ data, location, pageContext }) => {
     const { previous, next } = pageContext
     return(
         <Layout>
-            <SEO title="Blog Post"/>
-            <div id="Blog-Post">
-                <div id="Blog-Post-Header">
-                    <h1>{ title }</h1>
-                    <h4>{ publishDate }</h4>
+            <SEO title="Blog-Post"/>
+            <div className="Blog-Post">
+                <div className="Blog-Post-Header">
+                    <div className="Blog-Post-Header-Title">
+                        <h1>{ title }</h1>    
+                    </div>
+                    <div className="Blog-Post-Header-Meta">
+                        <p className="Blog-Post-Body-Description">{ description }</p>
+                        <h4>{ publishDate }</h4>    
+                    </div>
                 </div>
-                <div id="Blog-Post-Photo">
+                <div className="Blog-Post-Photo">
                     <img src={picture.file.url} />
                 </div>
-                <div id="Blog-Post-Body">
-                    <p id="Blog-Post-Body-Description">{ description }</p>
-                    <div
-                        dangerouslySetInnerHTML={{
+                <div
+                    className="Blog-Post-Body"
+                    dangerouslySetInnerHTML={{
                         __html: body.childContentfulRichText.html
-                        }}
-                    />
-                </div>
-                <div id="Blog-Post-Next-Posts">
+                    }}
+                />
+                <div className="Blog-Post-Next-Posts">
                     <p>Next 3 blog posts</p>
                 </div>
             </div>

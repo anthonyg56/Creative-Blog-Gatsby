@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import '../Sass/landing.scss'
 
 const ArtPostContentfulTemplate = ({ data, location, pageContext }) => {
     console.log(data)

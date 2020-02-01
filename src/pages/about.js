@@ -13,11 +13,11 @@ const About = ({ data }) => {
     return(
         <Layout>
             <SEO title="About"/>
-            <div id="About">
-                <div id="About-Photo">
+            <div className="About">
+                <div className="About-Photo">
                     <img src={picture.file.url} />
                 </div>
-                <div id="About-Description">
+                <div className="About-Description">
                     <h1>{ title }</h1>
                     <div
                         dangerouslySetInnerHTML={{

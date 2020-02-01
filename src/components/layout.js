@@ -7,30 +7,31 @@
 
 import React from "react"
 import { Link } from 'gatsby'
+import '../Sass/index.scss'
 
 const Layout = ({ children }) => (
-  <div id="layout">
-    <div id="navbar">
-      <div id="navbar-container">
-        <Link to="/">
-          <p>Home</p>
-        </Link>
-        <Link to="/about">
-          <p>About</p>
-        </Link>
+  <div className="layout">
+    <div className="navbar">
+      <div className="Logo">
+        <Link to="/"><h4>A Creatives Blog</h4></Link>
+      </div>
+      <div className="navbar-container">
         <Link to="/blog">
           <p>Blog</p>
         </Link>
         <Link to="/art">
           <p>Art</p>
         </Link>
-        <Link to="/poetry">
+        {/* <Link to="/poetry">
           <p>Poetry</p>
+        </Link> */}
+        <Link to="/about">
+          <p>About</p>
         </Link>
       </div>
     </div>
     { children }
-    <div id="footer">
+    <div className="footer">
       {/* Social Media Links & Icons */}
     </div>
   </div>

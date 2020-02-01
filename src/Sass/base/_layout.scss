@@ -1,0 +1,30 @@
+.layout {
+    padding: 0 200px;
+    
+    a {
+        text-decoration: none;
+    }
+    .navbar {
+        display: flex;
+        border-bottom: 1px solid black;
+        h4, p {
+            margin-bottom: 15px;
+        }
+        .Logo {
+            margin-right: auto;
+        }
+        .navbar-container {
+            margin-left: auto;
+            display: flex;
+            a {
+                margin: 0 10px;
+                p {
+
+                }
+            }
+        }
+    }
+    .footer {
+
+    }
+}
